@@ -1,0 +1,51 @@
+<%- include ("partials/header") %>
+<div class="container">
+	<div class="card">
+		<h4 class="card-header">User Profile</h4>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-lg-4">
+					<img style="width: 100%;" src="<%=user.avatar%>">
+				</div>
+				<div class="col-lg-8 pl-5 py-5">
+					<h4 class="mb-3">Name - <%=user.firstName%> <%=user.lastName%></h4>
+					<h4 class="mb-3">
+						E-mail - <%=user.email%>
+					</h4>
+					<h4 class="mb-3">
+						Username - <%= user.username%>
+					</h4>
+					<h4 class="mb-3">
+						Password - ###########
+					</h4>
+				</div>
+			</div>	
+		</div>
+	</div>
+	<div class="card my-5">
+		<h5 class="card-header">Submitted Campgrounds</h5>
+		<div class="card-body">
+			<% campgrounds.forEach(function(campground){ %>
+				<div class="row border mb-4 mx-3 rounded">
+					<div class="col-lg-5 my-3">
+						<img class="rounded" style="width: 100%;" src="<%=campground.Image%>">
+					</div>
+					<div class="col-lg-7 pl-5 py-5 mr-0">
+						<a href="/campgrounds/<%=campground._id%>">
+							<h1>
+								<%= campground.name %>
+							</h1>
+						</a>	
+						<h4 class="mt-3">
+							Rs - <%=campground.price%>/Night
+						</h4>
+						<p class="mt-4">
+							<em><%=campground.description.substring(0,200)%> ...</em>
+						</p>
+					</div>
+				</div>
+			<% }) %>
+		</div>
+	</div>
+</div>
+<%- include ("partials/footer") %>

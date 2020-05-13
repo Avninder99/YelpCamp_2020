@@ -1,0 +1,111 @@
+<%- include ("../partials/header") %>
+<div class="container">
+	
+	<div class="row">
+		
+		<div class="col-sm-12">
+			<div class="card border-0" style="width: 100%;">
+				<img src="<%= campground.Image%>" class="card-img-top" alt="...">
+				<div class="card-body">
+					<div class="d-flex flex-row justify-content-between">
+						<h4 class="card-title"><%= campground.name %></h4>
+						<h5 class="pull-right">Rs <%=campground.price%>/Night</h5>	
+					</div>
+					
+					<p class="card-text"><%= campground.description %></p>
+					
+					<h5><em>Submitted By :- <a href="/user/<%=campground.author.id%>"><strong><%= campground.author.username %></strong></a> , <%= moment(campground.createdAt).calendar() %></em></h5>
+					
+					<div>
+						<form action="/campgrounds/<%=campground._id%>/like" method="POST" class="d-inline">
+							<button class="btn btn-primary">
+								<i class="fas fa-thumbs-up"></i> Likes (<span><%=campground.likes.length%></span>)
+							</button>
+						</form>	
+						
+						<!-- Button trigger modal -->
+						<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
+							<em>View people who liked this place</em>
+						</button>
+
+						<!-- Modal -->
+						<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						  	<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">User who have liked this place</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										<% campground.likes.forEach(function(like){ %>
+											<ul class="list-group">
+												<li class="list-group-item py-1 text-center"><em><%=like.username%></em></li>
+											</ul>
+										<% }) %>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Close</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<% if(currentUser && campground.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+						<div class="btnholder1 d-flex flex-row justify-content-end">
+							<a href="/campgrounds/<%=campground._id%>/edit" class="btn btn-warning mr-2">Edit</a>
+							<form class="d-inline" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
+								<button class="btn btn-danger">
+									Delete
+								</button>
+							</form>
+						</div>
+					<% } %>
+					
+				</div>
+			</div>
+			
+			<div class="card mt-5">
+				<h5 class="card-header">Comments</h5>
+				<div class="card-body">
+					
+					<form action="/campgrounds/<%= campground._id %>/comments" method="POST">
+						<div class="row">
+							<div class="form-group col-lg-10" >
+								<input class="form-control" type="text" placeholder="Comment Text" name="comment[text]">
+							</div>
+							<div class="form-group col-lg-2">
+								<button class="btn btn-primary ml-3">Add Comment</button>
+							</div>
+						</div>
+					</form>	
+					
+					<% campground.comments.forEach(function(comment){ %>
+						<hr>
+						<div class="row">
+							<div class="col-md-12 d-flex flex-row justify-content-between">
+								<span><strong><%= comment.author.username %></strong></span>
+								<spanclass="pull-right"><em><%= moment(campground.createdAt).fromNow() %></em></span>
+							</div>	
+						</div>
+						<p>- <%= comment.text %></p>
+						
+						<% if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+							<a class="btn btn-warning btn-sm" href="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>/edit">Edit</a>
+							<form class="d-inline ml-1" action="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+								<button class="btn btn-danger btn-sm">
+									Delete
+								</button>	
+							</form>
+						<% } %>
+					
+					<% }) %>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<%- include ("../partials/footer") %>

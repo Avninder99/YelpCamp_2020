@@ -1,0 +1,23 @@
+<%- include ("partials/header") %>
+<div class="container ">
+	
+	<div id="registerdiv">
+		<h1 class="display-3 heading1">
+			Login
+		</h1>
+		<form action="/login" method="POST">
+			<input type="text" class="form-control marginb" name="username" placeholder="Username" required>
+			<input type="password" class="form-control mb-2 passinput" name="password" placeholder="Password" required>
+			<div class="d-flex flex-row justify-content-between">
+				<a class="btn btn-warning btn-sm showpass mr-2">Show Password</a>
+				<a href="/forgot" class="btn btn-primary btn-sm ml-2">Forgot Password ?</a>
+			</div>
+			<button class="btn btn-success btn-lg mta mt-2">
+				Login
+			</button>
+		</form>
+		<a class="btn btn-secondary" href="/register">New User ? Register Here</a>
+	</div>
+</div>
+<script src="scripts/showpass.js"></script>
+<%- include ("partials/footer") %>

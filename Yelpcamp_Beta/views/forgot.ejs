@@ -1,0 +1,15 @@
+<%- include ("partials/header") %>
+<div class="container">
+	<div id="div1">
+		<p id="para1">
+			<em>Enter your E-mail associated with your ID, So we can sent you password rest link.</em>
+		</p>
+		<form action="/forgot" method="POST">
+			<div class="form-group">
+				<input type="email" name="email" class="form-control" placeholder="E-mail" required>
+			</div>
+			<button type="submit" class="btn btn-primary btn-lg">Send mail</button>
+		</form>
+	</div>
+</div>
+<%- include ("partials/footer") %>

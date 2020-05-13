@@ -1,0 +1,23 @@
+<%- include ("partials/header") %>
+<div class="container ">
+	<div id="registerdiv">
+		<h1 class="heading1 display-3">
+			Sign Up
+		</h1>
+		<form action="/register" method="POST">
+			<input type="text" class="form-control" name="firstName" placeholder="First Name" required>
+			<input type="text" class="form-control" name="lastName" placeholder="Last Name" required>
+			<input type="text" class="form-control" name="username" placeholder="Username" required>
+			<input type="password" class="form-control" name="password" placeholder="Password" required>
+			<input type="email" class="form-control" name="email" placeholder="E-mail" required>
+			<input type="text" class="form-control" name="avatar" placeholder="Avatar Url" required>
+			<input type="password" class="form-control" name="admincode" placeholder="Admin Key">
+			<button class="btn btn-primary btn-lg">
+				Join the Community
+			</button>
+		</form>
+	</div>
+</div>
+
+
+<%- include ("partials/footer") %>
