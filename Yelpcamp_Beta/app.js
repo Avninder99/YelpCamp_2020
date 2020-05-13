@@ -1,24 +1,18 @@
 var express        = require("express"),
     app            = express(),
     bodyParser     = require("body-parser"),
-	mongoose       = require("mongoose"),
-	CampGround     = require("./models/campground"),
-	passport       = require("passport"),
-	flash          = require("connect-flash"),
-	LocalStrategy  = require("passport-local"),
-	methodOverride = require("method-override"),
-	User           = require("./models/user"),
-	Comment        = require("./models/comment");
+    mongoose       = require("mongoose"),
+    CampGround     = require("./models/campground"),
+    passport       = require("passport"),
+    flash          = require("connect-flash"),
+    LocalStrategy  = require("passport-local"),
+    methodOverride = require("method-override"),
+    User           = require("./models/user"),
+    Comment        = require("./models/comment");
 
 var commentRoutes    = require("./routes/comments"),
-	campgroundRoutes = require("./routes/campgrounds"),
-	indexRoutes      = require("./routes/index");
-
-//var	seedDB        = require("./seeds");        // for seeding database
-//seedDB();
-
-
-
+    campgroundRoutes = require("./routes/campgrounds"),
+    indexRoutes      = require("./routes/index");
 
 mongoose.connect("mongodb://localhost:27017/yelp_camp_beta_v2",{ useNewUrlParser: true,useUnifiedTopology: true,useFindAndModify:false});
 app.use(bodyParser.urlencoded({extended:true}));
@@ -31,7 +25,7 @@ app.use(methodOverride("_method"));
 // passport configration
 
 app.use(require("express-session")({
-	secret: "Dragon Armament",
+	secret: "Sagittarius A*",
 	resave: false,
 	saveUninitialized: false
 }));
