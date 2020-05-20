@@ -1,6 +1,6 @@
-var CampGround = require("../models/campground");
-var Comment    = require("../models/comment");
-var middlewareObjects = {};
+const CampGround = require("../models/campground"),
+	  Comment    = require("../models/comment"),
+	  middlewareObjects = {};
 
 middlewareObjects.campgroundOwnerAuth = function(req,res,next){
 	if(req.isAuthenticated()){
@@ -52,6 +52,5 @@ middlewareObjects.isLoggedIn = function(req,res,next){
 	req.flash("error","Please Login First !!!");
 	res.redirect("/login");
 }
-
 
 module.exports = middlewareObjects;

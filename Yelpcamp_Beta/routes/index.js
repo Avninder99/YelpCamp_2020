@@ -1,11 +1,11 @@
-var express  = require("express");
-var router   = express.Router({mergeParams: true});
-var passport = require("passport");
-var CampGround     = require("../models/campground");
-var User     = require("../models/user");
-var async = require("async");
-var nodemailer = require("nodemailer");
-var crypto = require("crypto");
+const express  = require("express"),
+      router   = express.Router({mergeParams: true}),
+      passport = require("passport"),
+      CampGround     = require("../models/campground"),
+      User     = require("../models/user"),
+      async = require("async"),
+      nodemailer = require("nodemailer"),
+      crypto = require("crypto");
 
 // this is home page
 router.get("/",function(req,res){

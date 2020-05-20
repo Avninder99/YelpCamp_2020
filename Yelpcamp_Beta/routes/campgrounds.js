@@ -1,8 +1,7 @@
-var express    = require("express");
-var router     = express.Router();
-var CampGround = require("../models/campground");
-var middleware = require("../middleware");
-
+const express    = require("express"),
+	  router     = express.Router(),
+	  CampGround = require("../models/campground"),
+	  middleware = require("../middleware").default;
 
 // this page is to view all the campgrounds in database  (Home page)
 router.get("/campgrounds",function(req,res){
@@ -122,11 +121,5 @@ router.post("/campgrounds/:id/like",middleware.isLoggedIn,function(req,res){
 		}
 	})
 });
-
-
-
-
-
-	
 
 module.exports = router;

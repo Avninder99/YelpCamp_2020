@@ -1,12 +1,10 @@
-var express    = require("express");
-var router     = express.Router();
-var CampGround = require("../models/campground");
-var Comment    = require("../models/comment");
-var middleware = require("../middleware");
+const express    = require("express"),
+	  router     = express.Router(),
+	  CampGround = require("../models/campground"),
+	  Comment    = require("../models/comment"),
+	  middleware = require("../middleware");
 
 router.get("/campgrounds/:id/comments/new",middleware.isLoggedIn,function(req,res){
-	
-	
 	CampGround.findById(req.params.id,function(err,foundcampGround){
 		if(err){
 			console.log(err);
@@ -68,7 +66,6 @@ router.put("/campgrounds/:id/comments/:comment_id",middleware.commentOwnerAuth,f
 	});
 });
 
-
 //delete route for comments
 router.delete("/campgrounds/:id/comments/:comment_id",middleware.commentOwnerAuth,function(req,res){
 	Comment.findByIdAndRemove(req.params.comment_id,function(err){
@@ -81,7 +78,5 @@ router.delete("/campgrounds/:id/comments/:comment_id",middleware.commentOwnerAut
 		}
 	})
 });
-
-
 
 module.exports = router;

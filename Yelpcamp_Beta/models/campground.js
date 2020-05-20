@@ -1,7 +1,7 @@
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
 // this will make a default object structure
-var campGroundSchema = new mongoose.Schema({
+const campGroundSchema = new mongoose.Schema({
 	name: String,
 	price: String,
 	Image: String,
