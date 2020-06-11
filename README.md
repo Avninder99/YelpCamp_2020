@@ -1,4 +1,5 @@
 # YelpCamp_2020
+### Made by :- Avninder
 Campsites searching website with complete back-end and database.
 ### Nodejs used as back-end framework
 ### MongoDB as database
@@ -11,4 +12,3 @@ Check it out here -> https://yelpcamp999.herokuapp.com/
   5. completely responsive.
   6. Comments functionality.
 ### Share and suggest :)
-Made by :- Avninder
